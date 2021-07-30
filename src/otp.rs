@@ -1,3 +1,3 @@
 pub trait Otp {
-    pub fn generate(&self) -> u64;
+    fn generate(&mut self) -> u64;
 }

@@ -1,1 +1,1 @@
-mod otp;
+use crate::otp::Otp;
