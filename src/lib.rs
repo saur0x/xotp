@@ -1,7 +1,8 @@
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
-}
+mod otp;
+mod totp;
+mod hotp;
+
+
+pub use otp::OTP;
+pub use totp::TOTP;
+pub use hotp::HOTP;

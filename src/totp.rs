@@ -1,4 +1,4 @@
-use crate::otp::Otp;
+use crate::otp::OTP;
 use sha1::Sha1;
 use hmac::{Hmac, Mac, NewMac};
 use data_encoding::BASE32;
@@ -8,15 +8,16 @@ use std::time::{SystemTime, UNIX_EPOCH};
 type HmacSha1 = Hmac<Sha1>;
 
 
+#[allow(non_camel_case_types)]
 #[derive(Debug)]
-pub struct Totp {
+pub struct TOTP {
 	time_step: u64,
 	start_time: u64,
 	digit_count: u64,
 	mac: HmacSha1,
 }
 
-impl Totp {
+impl TOTP {
 	pub fn new(time_step: u64, start_time: u64, digit_count: u64, mac: HmacSha1) -> Self {
 		Self {
 			time_step, start_time, digit_count, mac
@@ -33,7 +34,7 @@ impl Totp {
 }
 
 
-impl Otp for Totp {
+impl OTP for TOTP {
 	fn generate(&mut self) -> u64 {
 		let now = SystemTime::now();
 		let since_epoch = now
